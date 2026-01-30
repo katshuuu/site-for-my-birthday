@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Для тебя💙</title>
+  <link rel="icon" type="image/x-icon" href="/birthday_20/img/fav.png">
+
+  <!-- Шрифты -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:700,900&subset=cyrillic" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&subset=cyrillic" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- CSS -->
+  <style>
+    @import url("https://fonts.googleapis.com/css?family=Montserrat:700,900&subset=cyrillic");
+    @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i&subset=cyrillic');
+
+    @keyframes header_anim {
+      from {
+        transform: translateX(-120%);
+      }
+      to {
+        transform: translateX(0);
+      }
+    }
+        /* Подключение локальных шрифтов */
+    @font-face {
+      font-family: 'CustomFont1';
+      src: url('/birthday_20/fonts/GreatVibes-Regular.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap; /* Шрифт быстро заменится системным, потом подгрузится */
+    }
+
+    @font-face {
+      font-family: 'CustomFont2';
+      src: url('/birthday_20/fonts/RuslanDisplay-Regular.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'CustomFont3';
+      src: url('/birthday_20/fonts/SofiaSansExtraCondensed-VariableFont_wght.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    h2 {
+      position: relative;
+      font-family:'CustomFont1';
+      font-size: 8em;
+      font-weight: 700;
+    }
+
+    p {
+      position: relative;
+      font-family: 'CustomFont3';
+      font-size: 3.5em;
+      font-weight: 300;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'CustomFont3';
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    }
+
+
+    .header {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 8px 50px;
+      background-color: #02f;
+      background-image: url("/birthday_20/img/bg.jpg");
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+      position: relative;
+    }
+
+    /* Добавляем полупрозрачный белый слой поверх фона */
+    .header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(240, 217, 248, 0.747);
+      z-index: 1;
+      transition: opacity 0.5s ease;
+    }
+
+    .header.photo-active::before {
+      opacity: 0;
+    }
+
+    /* Чтобы контент оставался поверх затемнения */
+    .header > * {
+      position: relative;
+      z-index: 2;
+    }
+
+    .header__title {
+      transform: translateX(0);
+      animation-name: header_anim;
+      animation-duration: 1s;
+      animation-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      text-transform: uppercase;
+      color: #fff;
+      align-self: center;
+    }
+
+    /* ===== ФОТО В ШАПКЕ ===== */
+    .header-photo {
+      width: auto;
+      height: auto;
+      max-width: 60vw;
+      max-height: 60vh;
+      transform: scale(1);
+      opacity: 1;
+      animation: fadeIn 1.2s ease-out forwards;
+      z-index: 2;
+      margin-bottom: 40px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .header-photo:hover {
+      transform: scale(1.05);
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(1);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1.5);
+      }
+    }
+
+    /* ===== КНОПКИ ПОД ФОТО ===== */
+    .photo-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 20px;
+      z-index: 3;
+      position: relative;
+    }
+
+    .photo-btn {
+      font-family: 'CustomFont2', sans-serif;
+      width: 300px;
+      height: 300px;
+      border: none;
+      border-radius: 40px;
+      background: rgba(224, 198, 255, 0.8);
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2.8em;
+      color: #40126f99;
+      font-weight: bold;
+    }
+
+    .photo-btn:hover {
+      transform: scale(1.15);
+      background: rgba(96, 24, 162, 0.9);
+      color: white;
+      box-shadow: 0 8px 25px rgba(138, 43, 226, 0.4);
+    }
+
+    .photo-btn:active {
+      transform: scale(0.95);
+    }
+
+    .photo-btn.active {
+      background: rgba(90, 24, 154, 0.95);
+      color: white;
+      box-shadow: 0 10px 30px rgba(90, 24, 154, 0.6);
+    }
+
+    /* Фоновые изображения для кнопок */
+    .photo-btn-1 {
+      background-image: linear-gradient(135deg, rgba(158, 85, 247, 0.8), rgba(196, 170, 245, 0.9));
+    }
+
+    .photo-btn-2 {
+      background-image: linear-gradient(135deg, rgba(186, 120, 237, 0.8), rgba(168, 195, 245, 0.9));
+    }
+
+    .photo-btn-3 {
+      background-image: linear-gradient(135deg, rgba(159, 169, 247, 0.8), rgba(255, 180, 140, 0.9));
+    }
+
+    /* Фоновые изображения для header при активации кнопок */
+    .header.bg-1 {
+      background-image: url("/birthday_20/img/first.jpg");
+    }
+
+    .header.bg-2 {
+      background-image: url("/birthday_20/img/second.jpg");
+    }
+
+    .header.bg-3 {
+      background-image: url("/birthday_20/img/third.jpg");
+    }
+
+    /* Адаптивность для мобильных */
+    @media (max-width: 768px) {
+      .header-photo {
+        max-width: 85vw;
+        max-height: 50vh;
+      }
+
+      .photo-buttons {
+        gap: 15px;
+      }
+
+      .photo-btn {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5em;
+      }
+    }
+
+    .article {
+      position: relative;
+      min-height: 100vh;
+      padding: 8px 50px;
+    }
+
+    .article_whitebg::before,
+    .article_bluebg::before {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      content:'';
+    }
+
+    .article_whitebg::before {
+      background: rgba(255, 255, 255, 0.941);
+    }
+
+    .article_bluebg::before {
+      background: rgba(190, 146, 231, 0.5);
+    }
+
+    .article_first,
+    .article_second {
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+    }
+
+    .article_first {
+      background-image: url("/birthday_20/img/first_bg.jpg");
+    }
+
+    .article_second {
+      background-image: url("/birthday_20/img/second_bg.jpg");
+    }
+
+    .form {
+      position: relative;
+      width: 500px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .form_input,
+    .form_textarea {
+      display: block;
+      box-sizing: border-box;
+      width: 100%;
+      margin-bottom: 16px;
+      padding: 8px 16px;
+      transition: transform 0.3s ease-out;
+      color: #02f;
+      border: none;
+      border-radius: 8px;
+      outline: none;
+      background-color: #fff;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 1.5em;
+      font-weight: 300;
+    }
+
+    .form_input::-webkit-input-placeholder,
+    .form_textarea::-webkit-input-placeholder {
+      opacity: 0.6;
+      color: rgb(57, 5, 60);
+    }
+
+    .form_input:focus,
+    .form_textarea:focus {
+      transition: transform 0.3s ease-out;
+      transform: scale(1.02, 1.02);
+    }
+
+    .form_textarea {
+      resize: none;
+    }
+
+    .form_button {
+      display: inline-block;
+      padding: 12px 32px;
+      transition: all 0.3s ease-out;
+      text-transform: uppercase;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      outline: none;
+      background-color: rgb(70, 20, 106);
+      background-clip: border-box;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.5em;
+      font-weight: 700;
+    }
+
+    .form_button:hover {
+      transition: all 0.3s ease-out;
+      transform: scale(1.02, 1.02);
+      box-shadow: rgba(255, 255, 255, 0.3) 0 0 16px 2px;
+    }
+
+    .black {
+      color: #000;
+    }
+
+    .white {
+      color: #fff;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: 0.8s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .photo {
+      position: absolute;
+      right: -5%;
+      top: 20%;
+      width: 70vw;
+      transform: rotate(30deg);
+      z-index: 1;
+      pointer-events: none;
+      border: 12px solid white;
+    }
+
+    /* ===== Сама фотография ===== */
+    .photo {
+      width: 40%;
+      display: block;
+      border-radius: 24px;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+      transition: transform 0.5s ease;
+      pointer-events: auto;
+    }
+
+    /* ===== Hover ТОЛЬКО на фото ===== */
+    .photo:hover {
+      transform: scale(1.08);
+    }
+
+    /* ===== Медленное красивое появление заголовка ===== */
+    .slow-fade {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: slowFadeIn 2.5s ease-out forwards;
+    }
+
+    @keyframes slowFadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ===== СТИЛИ ДЛЯ АККОРДЕОНА (обновленные) ===== */
+    .accordion-container {
+      position: relative;
+      width: 100%;
+      max-width: 900px;
+      margin: 60px auto 0;
+      padding: 20px;
+    }
+
+    .accordion-title {
+      text-align: center;
+      margin-bottom: 40px;
+      color: #333;
+      font-size: 2.8em;
+      font-weight: 700;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .accordion {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .accordion-item {
+      border-radius: 20px;
+      overflow: hidden;
+      background: rgba(224, 198, 255, 0.4);
+      transition: all 0.4s ease;
+      border: 2px solid transparent;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .accordion-item.active {
+      background: rgba(224, 198, 255, 0.9);
+      border-color: #8a2be2;
+      box-shadow: 0 8px 25px rgba(138, 43, 226, 0.3);
+      transform: scale(1.02);
+    }
+
+    .accordion-item:hover:not(.active) {
+      background: rgba(224, 198, 255, 0.6);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .accordion-header {
+      width: 100%;
+      padding: 30px 40px;
+      background: none;
+      border: none;
+      text-align: left;
+      font-family: "Montserrat", sans-serif;
+      font-size: 2.2em;
+      font-weight: 700;
+      cursor: pointer;
+      color: #333;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.4s ease;
+    }
+
+    .accordion-item.active .accordion-header {
+      color: #5a189a;
+      padding-bottom: 25px;
+    }
+
+    .accordion-icon {
+      font-size: 1.5em;
+      transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      color: #8a2be2;
+    }
+
+    .accordion-item.active .accordion-icon {
+      transform: rotate(180deg);
+      color: #5a189a;
+    }
+
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.7s cubic-bezier(0.4, 0, 0.2, 1), 
+                  padding 0.5s ease;
+      background: rgba(255, 255, 255, 0.8);
+    }
+
+    .accordion-item.active .accordion-content {
+      max-height: 500px;
+      padding: 25px 40px;
+    }
+
+    .accordion-content p {
+      font-size: 1.3em;
+      line-height: 1.6;
+      color: #444;
+      margin: 0;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: opacity 0.5s ease 0.2s, 
+                  transform 0.5s ease 0.2s;
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    .accordion-item.active .accordion-content p {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Адаптивность аккордеона */
+    @media (max-width: 1024px) {
+      .accordion-header {
+        padding: 25px 30px;
+        font-size: 1.8em;
+      }
+      
+      .accordion-title {
+        font-size: 2.2em;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .accordion-container {
+        padding: 10px;
+      }
+      
+      .accordion-header {
+        padding: 20px;
+        font-size: 1.6em;
+      }
+      
+      .accordion-title {
+        font-size: 1.8em;
+        margin-bottom: 30px;
+      }
+      
+      .accordion-content p {
+        font-size: 1.1em;
+      }
+      
+      .accordion-item.active .accordion-content {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="header" id="mainHeader">
+  <img src="/birthday_20/img/228.png" class="header-photo" alt="Фото" id="mainPhoto">
+  
+  <!-- Три квадратные кнопки -->
+  <div class="photo-buttons" id="photoButtons">
+    <button class="photo-btn photo-btn-1" data-bg="1" data-img="first.jpg">нажми</button>
+    <button class="photo-btn photo-btn-2" data-bg="2" data-img="second.jpg">на</button>
+    <button class="photo-btn photo-btn-3" data-bg="3" data-img="third.jpg">меня</button>
+  </div>
+</header>
+
+<!-- ===== БЛОК 1 ===== -->
+<article class="article article_whitebg article_first">
+  <h2 class="black reveal">Откровения для вступления</h2>
+
+  <p class="black reveal">
+   О, великая повелительница убойных сюрпризов и самая крутая Стэй в наших краях! Твоя уникальность - <br>не только безупречный вкус в литературе и божественная способность сохранять адекватность, но и  исполнять мечты, от которых у меня дергается глаз в такт сложнейшим битам Чанбина.
+  </p>
+  <p>Представь этот подарок не как «билет», а как пропуск в мой личный рай, выстроенный Феликсом из лего и освещенный улыбкой Ай Эна. <br>Это билет на 3 часа чистого адреналина, катарсиса и коллективного безумия с восемью тысячами моих <br>новых лучших друзей (всех Стэй). Это вопрос выживания! Без этого концерта я так и буду сидеть дома, <br>смотреть fancam и ревновать к людям на экране, как бабушка к более удачливой соседке.
+</p>
+
+  <!-- Диагональное фото -->
+  <div class="photo-diagonal reveal">
+    <img class="photo"
+      src="/birthday_20/img/1.jpg"
+      alt="Музыка и эмоции">
+  </div>
+</article>
+
+<!-- ===== БЛОК 2 ===== -->
+<article class="article article_bluebg">
+  <h2 class="white reveal">Музыка — это я</h2>
+
+  <p class="white reveal">
+Ты же знаешь, моя душа обычно делится на два состояния: «спокойная» и «ждущая новый релиз Бюро». Эти парни не просто попали в мое ультраразно, они там прописались, развели там лагерь и постоянно устраивают ночные тусовки в моей голове. Под «Реки зацветут» я рыдаю так драматично, будто снимаюсь в дораме с трагичным финалом, а под «Сальсу» начинаю бегать по комнате, как Хан Джисон в поисках новой идеальной строчки для репа. Ты сама видела эти конвульсии счастья!
+  </p>
+  <p>Сказать, что я хочу на этот концерт — ничего не сказать. Я хочу этого так сильно, что готова тренировать свой крик,<br> чтобы переорать фанбазу всего сектора.<br> Их музыка — это не просто песни. Это звуковой наркотик, после которого обычная музыка кажется тихим часом в детском саду. <br>Они не просто артисты, они — инженеры, которые чинят мою сломанную мотивацию битами,<br>а мою грусть — гармониями вокалистов.</p>
+
+  <!-- Диагональное фото -->
+  <div class="photo-diagonal reveal">
+    <img class="photo"
+      src="/birthday_20/img/2.jpg"
+      alt="Концерт">
+  </div>
+</article>
+
+<!-- ===== БЛОК 3 ===== -->
+<article class="article article_whitebg">
+  <div class="article-content">
+    <h2 class="black reveal">Наконец - желанный подарок</h2>
+    <p class="black reveal">
+      Если честно… самый желанный подарок для меня —  
+      <strong>билет на <a href="https://band.link/buromskspb">концерт моей любимой группы </a></strong>.
+    </p>
+    <p class="black reveal">
+      Это правда очень важно для меня 💙
+    </p>
+  </div>
+  
+  <!-- АККОРДЕОН -->
+  <div class="accordion-container">
+    <h2 class="accordion-title reveal">Потенциально задаваемые вопросы</h2>
+    <div class="accordion">
+      <div class="accordion-item active">
+        <button class="accordion-header">
+          Почему именно Бюро?
+          <span class="accordion-icon">▼</span>
+        </button>
+        <div class="accordion-content">
+          <p><s>Stray Kids</s> Бюро — это не просто группа. Это семья из четырех талантливых артистов, которые пишут свою музыку, создают уникальные концепты и вкладывают душу в каждую песню. Их музыка даёт силу, вдохновение и помогает пережить трудные моменты.</p>
+        </div>
+      </div>
+      
+      <div class="accordion-item">
+        <button class="accordion-header">
+          Может, анекдот?
+          <span class="accordion-icon">▼</span>
+        </button>
+        <div class="accordion-content">
+          <p>Учительница русского языка, впервые прыгнувшая с парашютом, была потрясена, удивлена, крайне обескуражена, но вслух кричала по-другому.</p>
+        </div>
+      </div>
+      
+      <div class="accordion-item">
+        <button class="accordion-header">
+          А еще есть?
+          <span class="accordion-icon">▼</span>
+        </button>
+        <div class="accordion-content">
+          <p>Учительница с зарплатой 9 тысяч рублей плачет, когда пишет на доске «Классная работа».</p>
+          
+        </div>
+      </div>
+      
+      <div class="accordion-item">
+        <button class="accordion-header">
+          Почему это лучший подарок?
+          <span class="accordion-icon">▼</span>
+        </button>
+        <div class="accordion-content">
+          <p>Потому что это подарок, который останется в памяти навсегда. Это эмоции, которые невозможно передать словами, это моменты счастья, ради которых стоит жить. Это мечта, которая может стать реальностью с твоей помощью!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- ===== БЛОК 4 ===== -->
+<article class="article article_bluebg article_second">
+  <h2 class="white reveal">Свяжись со мной</h2>
+
+  <p class="white reveal">
+    Даже если просто захочешь написать про всех гадов — я буду очень рада. Но пока эта штука не работает (только пока)
+  </p>
+
+  <form class="form reveal">
+    <input type="email" class="form_input" placeholder="E-mail">
+    <input type="text" class="form_input" placeholder="Имя">
+    <textarea class="form_textarea" placeholder="Твоё сообщение"></textarea>
+    <button class="form_button" type="button">
+      Написать мне 🤍
+    </button>
+  </form>
+</article>
+
+<!-- ===== JS ===== -->
+<script>
+  // Анимация появления элементов при скролле
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  reveals.forEach(el => observer.observe(el));
+
+  // Логика аккордеона
+  document.addEventListener('DOMContentLoaded', function() {
+    const accordionItems = document.querySelectorAll('.accordion-item');
+    
+    function closeAllItems() {
+      accordionItems.forEach(item => {
+        item.classList.remove('active');
+      });
+    }
+    
+    accordionItems.forEach(item => {
+      const header = item.querySelector('.accordion-header');
+      
+      header.addEventListener('click', function() {
+        const isActive = item.classList.contains('active');
+        closeAllItems();
+        if (!isActive) {
+          item.classList.add('active');
+        }
+      });
+    });
+    
+    // Закрытие по клику вне аккордеона
+    document.addEventListener('click', function(event) {
+      if (!event.target.closest('.accordion-container')) {
+        closeAllItems();
+      }
+    });
+  });
+
+  // Логика для кнопок переключения фона
+  document.addEventListener('DOMContentLoaded', function() {
+    const header = document.getElementById('mainHeader');
+    const photoButtons = document.querySelectorAll('.photo-btn');
+    let activeButton = null;
+
+    photoButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const bgNumber = this.getAttribute('data-bg');
+        const imgName = this.getAttribute('data-img');
+        
+        // Удаляем все классы bg-* с header
+        header.classList.remove('bg-1', 'bg-2', 'bg-3');
+        
+        // Добавляем нужный класс фона
+        header.classList.add(`bg-${bgNumber}`);
+        
+        // Добавляем класс для скрытия полупрозрачного слоя
+        header.classList.add('photo-active');
+        
+        // Удаляем активный класс со всех кнопок
+        photoButtons.forEach(btn => btn.classList.remove('active'));
+        
+        // Добавляем активный класс к нажатой кнопке
+        this.classList.add('active');
+        activeButton = this;
+        
+        // Меняем основное фото
+        const mainPhoto = document.getElementById('mainPhoto');
+        mainPhoto.src = `/img/${imgName}`;
+        mainPhoto.alt = `Фото ${bgNumber}`;
+      });
+    });
+
+    // Сброс фона при клике вне кнопок
+    header.addEventListener('click', function(event) {
+      if (!event.target.closest('.photo-btn') && activeButton) {
+        // Удаляем все классы фона
+        header.classList.remove('bg-1', 'bg-2', 'bg-3');
+        header.classList.remove('photo-active');
+        
+        // Сбрасываем активную кнопку
+        photoButtons.forEach(btn => btn.classList.remove('active'));
+        activeButton = null;
+        
+        // Возвращаем оригинальное фото
+        const mainPhoto = document.getElementById('mainPhoto');
+        mainPhoto.src = "/img/228.png";
+        mainPhoto.alt = "STAAAY";
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
