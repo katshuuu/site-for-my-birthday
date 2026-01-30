@@ -18,7 +18,7 @@ body {
   min-height: 100vh;
   padding: 8px 50px;
   background-color: #02f;
-  background-image: url("/birthday_20/img/bg.jpg");
+  background-image: url("img/bg.jpg");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -120,11 +120,11 @@ body {
 }
 
 .article_first {
-  background-image: url("/birthday_20/img/first_bg.jpg");
+  background-image: url("img/first_bg.jpg");
 }
 
 .article_second {
-  background-image: url("/birthday_20/img/second_bg.jpg");
+  background-image: url("img/second_bg.jpg");
 }
 
 .form {
@@ -283,6 +283,28 @@ body {
   font-size: 1.2em;
   margin: 16px 0;
 }
+/* Простое масштабирование всей страницы */
+html {
+    zoom: 50%;
+    -moz-transform: scale(0.5);
+    -moz-transform-origin: top left;
+    -webkit-transform: scale(0.5);
+    -webkit-transform-origin: top left;
+    width: 200%;
+}
 
+body {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/* Для Firefox */
+@-moz-document url-prefix() {
+    body {
+        transform: scale(0.5);
+        transform-origin: top left;
+        width: 200%;
+    }
+}
 
 
