@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Красивая кнопка</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fff;
+            font-family: Arial, sans-serif;
+        }
+
+        .gradient-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 200px 400px;
+            font-size: 150px;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+
+            border-radius: 40px;
+            cursor: pointer;
+
+            background: linear-gradient(
+                120deg,
+                #f40a0a,
+                #f55b5b,
+                #f3d9d9
+            );
+            background-size: 300% 300%;
+            box-shadow: 0 20px 40px rgba(255, 0, 0, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gradient-button:hover {
+            animation: gradientMove 1.5s infinite;
+            transform: scale(1.05);
+            box-shadow: 0 30px 60px rgba(255, 0, 0, 0.6);
+        }
+
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="/4548825/index.html" class="gradient-button">
+        КЛАЦ
+    </a>
+
+</body>
+</html>
