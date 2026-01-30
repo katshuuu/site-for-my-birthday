@@ -302,7 +302,7 @@ body {
   margin: 0 auto;
   width: 99.310936%; /* 1153px / 1161px = 99.310936% */
   line-height: 54.55386px;
-  font-size: 35px;
+  font-size: 25px;
 }
 .rectangle-2-2 {
   height: 33px;
@@ -384,7 +384,7 @@ body {
   -moz-background-clip: padding;
   -webkit-background-clip: padding-box;
   background-clip: padding-box; /*Will not allow bg color to leak outside borders*/
-  font-size: 3.1rem; /* 61.54px / 16px = 3.84625rem */
+  font-size: 2rem; /* 61.54px / 16px = 3.84625rem */
   text-align: center;
   cursor: pointer;
   transition: 
@@ -577,7 +577,7 @@ body {
   padding-left: 100%;
   animation: scroll 25s linear infinite;
   line-height: 60px;
-  font-size: 14px;
+  font-size: 10px;
   font-family: "MyFont", Arial, sans-serif;
   font-size: 3.645834rem; /* 58.33px / 16px = 3.645625rem */
 }
