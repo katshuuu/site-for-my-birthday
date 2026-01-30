@@ -283,28 +283,6 @@ body {
   font-size: 1.2em;
   margin: 16px 0;
 }
-/* Простое масштабирование всей страницы */
-html {
-    zoom: 50%;
-    -moz-transform: scale(0.5);
-    -moz-transform-origin: top left;
-    -webkit-transform: scale(0.5);
-    -webkit-transform-origin: top left;
-    width: 200%;
-}
 
-body {
-    width: 100%;
-    overflow-x: hidden;
-}
-
-/* Для Firefox */
-@-moz-document url-prefix() {
-    body {
-        transform: scale(0.5);
-        transform-origin: top left;
-        width: 200%;
-    }
-}
 
 
